@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>All Quotes</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/">Quoting Dojo</a>
+                <a class="navbar-brand" href="/">Message Dashboard</a>
             </div>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/">Home</a></li>
@@ -20,16 +20,30 @@
                 </ul>
         </div>
     </nav>
-    <% for (var i in quotes) { %>
-    <div class="media">
-        <!--<div class="media-left">
-            <img src="./static/bart.jpg" class="media-object" style="width:60px">
-        </div>-->        
+    <% for (var i in quotes.reverse()) { %>
+    <div class="media">        
             <div class="media-body">
-                <h4 class="media-heading"><%= quotes[i].name %> said on, <%= quotes[i].createdAt %></h4>
-                <p><%= quotes[i].content %></p>
-        </div>
+                <h5 class="media-heading"><%= quotes[i].name %> said: </h5>
+                <h3>"<%= quotes[i].content %>"</h3>
+            </div>
     </div>
+    <ul class="list-group">
+        <% for (var j of quotes[i]._comments.reverse()) { %>
+        <li class="list-group-item"><span><%= j.name %> commented: <%= j.content %></span></li>
+        <% } %>
+    </ul>
+    <form class="form-inline" action="/comment" method="post">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="name" class="form-control" id="name" name="name">
+        </div>
+        <div class="form-group">
+          <label for="comment">Comment:</label>
+          <input type="text" class="form-control" id="comment" name="comment">
+        </div>
+        <input type="hidden" name="id" id="id" value=<%= quotes[i].id %>>
+        <button type="submit" class="btn btn-default">Comment</button>
+      </form>
     <% } %>
 </body>
 </html>

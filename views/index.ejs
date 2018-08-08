@@ -5,28 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Index</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container">
         <div class="jumbotron">
-          <h1>Quoting Dojo</h1> 
-          <p>The place to create and find dumb quotes</p> 
+          <h1>Message Dashboard</h1> 
+          <p>The place to create and find your messages</p> 
         </div>
     </div>
     <form action="/quote" method="post">
-        <div class="form-group">
+        <div class="form-group" style="width: 30%;">
           <label for="name">Author Name:</label>
           <input type="text" class="form-control" id="name" name="name">
         </div>
-        <div class="form-group">
-          <label for="content">Quote:</label>
+        <div class="form-group" style="width: 30%;">
+          <label for="content">Message:</label>
           <input type="textarea" class="form-control" id="content" name="content">
         </div>
-        <button type="submit" class="btn btn-default">Share this quote</button>
+        <button type="submit" class="btn btn-default">Post this message</button>
     </form>
     <br>
     <br>
-    <a href="/quotes">Skip and go to quotes</a>
+    <a href="/quotes">Skip and go to messages</a>
 </body>
 </html>
